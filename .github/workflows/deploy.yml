@@ -4,6 +4,8 @@ on:
     branches:
       - main
       - dev
+  workflow_dispatch:
+    description: "Manually run github actions."
 env:
   MONGODB_DB_NAME: gha-demo
 jobs:
@@ -34,7 +36,6 @@ jobs:
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
     needs: test
-    on: workflow_dispatch
     runs-on: ubuntu-latest
     steps:
       - name: Output information
